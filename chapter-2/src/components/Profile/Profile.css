@@ -7,12 +7,3 @@
     width: 150px;
 }
 
-.Profile-container > ul {
-    list-style: none;
-    padding: 0;
-    text-align: left;
-}
-
-.Profile-container > ul >li >span {
-    font-weight: 600;
-}
