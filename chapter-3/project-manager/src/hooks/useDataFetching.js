@@ -1,28 +1,28 @@
-import  {useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 function useDataFetching(dataSource) {
-const [loading, setLoading] = useState(false);
-const [data, setData] = useState([]);
-const [error, setError] = useState('')
+    const [loading, setLoading] = useState(false);
+    const [data, setData] = useState([]);
+    const [error, setError] = useState("");
 
-    useEffect(()=>{
-        async function fetchData(){
+    useEffect(() => {
+        async function fetchData() {
             try {
                 const data = await fetch(dataSource);
                 const result = await data.json();
 
-                if(result){
-                    setData();
-                    setLoading(false)
+                if (result) {
+                    setData(result);
+                    setLoading(false);
                 }
-            }catch(e){
+            } catch (e) {
                 setLoading(false);
                 setError(e.message);
             }
-        }fetchData();
-    }, [dataSource])    
+        }
+        fetchData();
+    }, [dataSource]);
 
-
-return [loading, data, error];
+    return [loading, data, error];
 }
 export default useDataFetching;
